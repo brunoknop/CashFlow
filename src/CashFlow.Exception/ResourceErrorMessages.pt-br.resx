@@ -1,0 +1,36 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="AMOUNT_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+        <value>O Valor deve ser maior que zero</value>
+    </data>
+    <data name="EXPENSES_CANNOT_BE_FOR_THE_FUTURE" xml:space="preserve">
+        <value>A despesa não pode ser para o futuro</value>
+    </data>
+    <data name="PAYMENT_TYPE_IS_INVALID" xml:space="preserve">
+        <value>Tipo de pagamento inválido</value>
+    </data>
+    <data name="TITLE_REQUIRED" xml:space="preserve">
+        <value>O título é obrigatório</value>
+    </data>
+    <data name="UNKNOW_ERROR" xml:space="preserve">
+        <value>Erro desconhecido</value>
+    </data>
+    <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
+        <value>A despesa não foi encontrada</value>
+    </data>
+</root>

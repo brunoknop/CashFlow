@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="ResourceErrorMessages.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>ResourceErrorMessages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="ResourceReportGenerationMessages.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>ResourceReportGenerationMessages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="ResourceReportGenerationMessages.pt-br.resx">
+            <DependentUpon>ResourceReportGenerationMessages.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="ResourceErrorMessages.pt-br.resx">
+            <DependentUpon>ResourceErrorMessages.resx</DependentUpon>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="ResourceErrorMessages.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ResourceErrorMessages.resx</DependentUpon>
+        </Compile>
+        <Compile Update="ResourceReportGenerationMessages.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>ResourceReportGenerationMessages.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+</Project>
