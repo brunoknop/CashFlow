@@ -31,7 +31,7 @@ public class UpdateExpenseUseCase : IUpdateExpenseUseCase
     {
         Validate(request);
 
-        var loggedUser = await _loggedUser.Get();
+        var loggedUser = await _loggedUser.GetLoggedUser();
         
         var expense = await _repository.GetById(loggedUser, id);
 

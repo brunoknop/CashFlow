@@ -2,6 +2,7 @@ using AutoMapper;
 using CashFlow.Communication.Requests.Users;
 using CashFlow.Communication.Responses.Users;
 using CashFlow.Domain.Entities;
+using CashFlow.Domain.Enums;
 using CashFlow.Domain.Repositories;
 using CashFlow.Domain.Repositories.UsersRepositories;
 using CashFlow.Domain.Security.Cryptography;
@@ -43,6 +44,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         
         var user = _mapper.Map<User>(request);
         
+        user.Role = Role.TeamMember;
         user.Password = _passwordEncrypter.Encrypt(request.Password);
         user.UserIdentifier = Guid.NewGuid();
         

@@ -62,4 +62,7 @@
     <data name="INVALID_TOKEN" xml:space="preserve">
         <value>The token is invalid.</value>
     </data>
+    <data name="EXPENSES_NOT_FOUND_FOR_THE_PERIOD" xml:space="preserve">
+        <value>Expenses not found for the desired period</value>
+    </data>
 </root>

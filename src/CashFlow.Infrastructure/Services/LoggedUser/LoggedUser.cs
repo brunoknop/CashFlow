@@ -19,7 +19,7 @@ public class LoggedUser : ILoggedUser
         _tokenProvider = tokenProvider;
     }
 
-    public async Task<User> Get()
+    public async Task<User> GetLoggedUser()
     {
         var token = _tokenProvider.TokenOnRequest();
 

@@ -54,4 +54,7 @@
     <data name="INVALID_TOKEN" xml:space="preserve">
         <value>O token é inválido</value>
     </data>
+    <data name="EXPENSES_NOT_FOUND_FOR_THE_PERIOD" xml:space="preserve">
+        <value>Despesas não encontradas para o período desejado</value>
+    </data>
 </root>

@@ -1,5 +1,6 @@
 using Bogus;
 using CashFlow.Domain.Entities;
+using CashFlow.Domain.Enums;
 using CommonTestUtilities.Cryptography;
 
 namespace CommonTestUtilities.Entities;
@@ -15,7 +16,8 @@ public class UserBuilder
                    .RuleFor(u => u.Name, faker => faker.Person.FirstName)
                    .RuleFor(u => u.Email, (faker, user) => faker.Internet.Email(user.Name))
                    .RuleFor(u => u.Password, (_, user) => passwordEncripter.Encrypt(user.Password))
-                   .RuleFor(u => u.UserIdentifier, _ => Guid.NewGuid());
+                   .RuleFor(u => u.UserIdentifier, _ => Guid.NewGuid())
+                   .RuleFor(u => u.Role, _ => Role.Administrator);
         
         return user;
     }

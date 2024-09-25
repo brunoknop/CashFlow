@@ -123,6 +123,15 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses not found for the desired period.
+        /// </summary>
+        public static string EXPENSES_NOT_FOUND_FOR_THE_PERIOD {
+            get {
+                return ResourceManager.GetString("EXPENSES_NOT_FOUND_FOR_THE_PERIOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The password must be at least 8 characters long and include uppercase and lowercase letters, numbers and symbols..
         /// </summary>
         public static string INVALID_PASSWORD {

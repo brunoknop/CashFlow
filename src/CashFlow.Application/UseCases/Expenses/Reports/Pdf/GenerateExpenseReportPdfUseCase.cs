@@ -3,6 +3,7 @@ using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
 using CashFlow.Domain.Entities;
 using CashFlow.Domain.Extensions;
 using CashFlow.Domain.Repositories.ExpensesRepositories;
+using CashFlow.Domain.Services.LoggedUser;
 using CashFlow.Exception;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
@@ -17,29 +18,36 @@ public class GenerateExpenseReportPdfUseCase : IGenerateExpenseReportPdfUseCase
     private readonly string CURRENCY_SYMBOL = "R$";
     private readonly int HEIGHT_ROW = 25;
     private readonly IExpensesReadOnlyRepository _repository;
+    private readonly ILoggedUser _loggedUser;
 
-    public GenerateExpenseReportPdfUseCase(IExpensesReadOnlyRepository repository)
+    public GenerateExpenseReportPdfUseCase(
+        IExpensesReadOnlyRepository repository,
+        ILoggedUser loggedUser)
     {
         _repository = repository;
+        _loggedUser = loggedUser;
     }
 
     public async Task<byte[]> Execute(DateOnly date)
     {
-        var expensesByDate = await _repository.FilterByMonth(date);
+        var loggedUser = await _loggedUser.GetLoggedUser();
+        
+        var expensesByDate = await _repository.FilterByMonth(loggedUser, date);
 
         if (expensesByDate is []) return [];
 
         GlobalFontSettings.FontResolver = new ExpensesReportFontResolver();
 
-        var document = CreateDocument(date);
+        var document = CreateDocument(loggedUser.Name, date);
         var page = CreatePage(document);
 
-        CreateHeaderWithAvatarAndName(page);
-        var totalExpenses = expensesByDate.Sum(expense => expense.Amount);
+        CreateHeaderWithAvatarAndName(loggedUser.Name, page);
+        var totalExpenses = Math.Round(expensesByDate.Sum(expense => expense.Amount), 2);
         CreateTotalExpensesSection(page, date, totalExpenses);
 
         foreach(var expense in expensesByDate)
         {
+            expense.Amount = Math.Round(expense.Amount, 2);
             CreateExpenseTable(page, expense);
         }
 
@@ -47,11 +55,11 @@ public class GenerateExpenseReportPdfUseCase : IGenerateExpenseReportPdfUseCase
     }
 
     #region Document Methots
-    private Document CreateDocument(DateOnly date)
+    private Document CreateDocument(string author, DateOnly date)
     {
         var document = new Document();
         document.Info.Title = $"{ResourceReportGenerationMessages.EXPENSES_FOR} {date.ToString("Y")}";
-        document.Info.Author = "Bruno Gabriel Knop";
+        document.Info.Author = author;
 
         var style = document.Styles["Normal"];
         style!.Font.Name = FontHelper.INTER_REGULAR;
@@ -87,11 +95,11 @@ public class GenerateExpenseReportPdfUseCase : IGenerateExpenseReportPdfUseCase
     #endregion
 
     #region Intro Content Sections
-    private void CreateHeaderWithAvatarAndName(Section page)
+    private void CreateHeaderWithAvatarAndName(string name, Section page)
     {
         var table = page.AddTable();
         table.AddColumn();
-        table.AddColumn();
+        table.AddColumn("195");
 
         var row = table.AddRow();
         var assembly = Assembly.GetExecutingAssembly();
@@ -100,7 +108,7 @@ public class GenerateExpenseReportPdfUseCase : IGenerateExpenseReportPdfUseCase
         var image = row.Cells[0].AddImage(pathFile);
         image.Width = 60;
         image.Height = 60;
-        row.Cells[1].AddParagraph("Hey, Bruno Knop");
+        row.Cells[1].AddParagraph($"Hey, {name}");
         row.Cells[1].Format.Font = new Font
         {
             Name = FontHelper.POPPINS_BLACK,

@@ -32,7 +32,7 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
     {
         Validate(request);
 
-        var loggedUser = await _loggerUser.Get();
+        var loggedUser = await _loggerUser.GetLoggedUser();
         
         var expense = _mapper.Map<Expense>(request);
         expense.UserId = loggedUser.Id;

@@ -2,7 +2,7 @@ using CashFlow.Domain.Entities;
 using CashFlow.Domain.Repositories.UsersRepositories;
 using Moq;
 
-namespace CommonTestUtilities.Repositories;
+namespace CommonTestUtilities.Repositories.Users;
 
 public class UserReadOnlyRespoitoryBuilder
 {

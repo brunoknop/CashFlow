@@ -100,4 +100,7 @@ async Task MigrateDataBase()
     await DataBaseMigration.MigrateDataBase(scope.ServiceProvider);
 }
 
-public partial class Program {}
+namespace CashFlow.Api
+{
+    public partial class Program {}
+}

@@ -1,6 +1,7 @@
 using CashFlow.Domain.Entities;
 using CashFlow.Domain.Extensions;
 using CashFlow.Domain.Repositories.ExpensesRepositories;
+using CashFlow.Domain.Services.LoggedUser;
 using CashFlow.Exception;
 using ClosedXML.Excel;
 
@@ -9,19 +10,26 @@ namespace CashFlow.Application.UseCases.Expenses.Reports.Excel;
 public class GenerateExpenseReportExcelUseCase : IGenerateExpenseReportExcelUseCase
 {
     private readonly IExpensesReadOnlyRepository _repository;
+    private readonly ILoggedUser _loggedUser;
 
-    public GenerateExpenseReportExcelUseCase(IExpensesReadOnlyRepository repository)
+    public GenerateExpenseReportExcelUseCase(
+        IExpensesReadOnlyRepository repository,
+        ILoggedUser loggedUser)
     {
         _repository = repository;
+        _loggedUser = loggedUser;
     }
 
     public async Task<byte[]> Execute(DateOnly date)
     {
-        var expensesByDate = await _repository.FilterByMonth(date);
+        var loggedUser = await _loggedUser.GetLoggedUser();
+        
+        var expensesByDate = await _repository.FilterByMonth(loggedUser, date);
 
         if (expensesByDate is []) return [];
 
         using var workbook = new XLWorkbook();
+        workbook.Author = loggedUser.Name;
         workbook.Style.Font.FontName = "Calibri";
         workbook.Style.Font.FontSize = 11;
         var worksheet = workbook.Worksheets.Add(date.ToString("Y"));
