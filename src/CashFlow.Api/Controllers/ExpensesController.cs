@@ -3,13 +3,15 @@ using CashFlow.Application.UseCases.Expenses.GetAllExpenses;
 using CashFlow.Application.UseCases.Expenses.GetById;
 using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Application.UseCases.Expenses.Update;
-using CashFlow.Communication.Requests;
+using CashFlow.Communication.Requests.Expenses;
 using CashFlow.Communication.Responses;
-using CashFlow.Exception.ExceptionsBase;
+using CashFlow.Communication.Responses.Expenses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashFlow.Api.Controllers;
 
+[Authorize]
 public class ExpensesController : CashFLowBaseController
 {
     [HttpPost]

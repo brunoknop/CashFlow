@@ -1,6 +1,6 @@
 using AutoMapper;
-using CashFlow.Communication.Responses;
-using CashFlow.Domain.Repositories;
+using CashFlow.Communication.Responses.Expenses;
+using CashFlow.Domain.Repositories.ExpensesRepositories;
 
 namespace CashFlow.Application.UseCases.Expenses.GetAllExpenses;
 

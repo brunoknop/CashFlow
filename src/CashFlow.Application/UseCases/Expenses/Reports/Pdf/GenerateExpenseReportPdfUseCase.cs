@@ -1,9 +1,8 @@
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Colors;
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
 using CashFlow.Domain.Entities;
-using CashFlow.Domain.Enums;
 using CashFlow.Domain.Extensions;
-using CashFlow.Domain.Repositories;
+using CashFlow.Domain.Repositories.ExpensesRepositories;
 using CashFlow.Exception;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;

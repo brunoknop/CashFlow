@@ -33,4 +33,25 @@
     <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
         <value>A despesa não foi encontrada</value>
     </data>
+    <data name="NAME_EMPTY" xml:space="preserve">
+        <value>O nome não pode ser vazio</value>
+    </data>
+    <data name="EMAIL_EMPTY" xml:space="preserve">
+        <value>O e-mail não pode ser vazio</value>
+    </data>
+    <data name="EMAIL_INVALID" xml:space="preserve">
+        <value>O e-mail é inválido</value>
+    </data>
+    <data name="INVALID_PASSWORD" xml:space="preserve">
+        <value>A senha deve ter pelo menos 8 caracteres e incluir letra maiúscula, minuscula, numero e símbolo</value>
+    </data>
+    <data name="EMAIL_EXISTS" xml:space="preserve">
+        <value>O e-mail já é usado em uma conta ativa.</value>
+    </data>
+    <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+        <value>O e-mail e a senha estão incorretos</value>
+    </data>
+    <data name="INVALID_TOKEN" xml:space="preserve">
+        <value>O token é inválido</value>
+    </data>
 </root>

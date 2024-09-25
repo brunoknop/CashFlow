@@ -1,7 +1,6 @@
 using CashFlow.Domain.Entities;
-using CashFlow.Domain.Enums;
 using CashFlow.Domain.Extensions;
-using CashFlow.Domain.Repositories;
+using CashFlow.Domain.Repositories.ExpensesRepositories;
 using CashFlow.Exception;
 using ClosedXML.Excel;
 

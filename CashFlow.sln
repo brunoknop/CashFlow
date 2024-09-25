@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Va
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{AA922060-3EDD-41DA-AC13-05FEF357EA1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "tests\UseCases.Test\UseCases.Test.csproj", "{B3112BFB-F570-4B20-9918-BB03C50DD4FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "tests\WebApi.Test\WebApi.Test.csproj", "{A94AB3B9-92B3-459C-841F-48AF85502612}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,14 @@ Global
 		{AA922060-3EDD-41DA-AC13-05FEF357EA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA922060-3EDD-41DA-AC13-05FEF357EA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA922060-3EDD-41DA-AC13-05FEF357EA1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3112BFB-F570-4B20-9918-BB03C50DD4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3112BFB-F570-4B20-9918-BB03C50DD4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3112BFB-F570-4B20-9918-BB03C50DD4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3112BFB-F570-4B20-9918-BB03C50DD4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A94AB3B9-92B3-459C-841F-48AF85502612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94AB3B9-92B3-459C-841F-48AF85502612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94AB3B9-92B3-459C-841F-48AF85502612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94AB3B9-92B3-459C-841F-48AF85502612}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +86,8 @@ Global
 		{93F452CE-B4BA-4B82-B719-AD5150E22B47} = {A0DA1141-7AB2-4325-AE87-B2AE9CEC23C7}
 		{6D4AD589-1F1A-4EB8-A2EA-0388AC9E12D6} = {9ED03ACF-69C1-4314-927F-9D7EF1805084}
 		{AA922060-3EDD-41DA-AC13-05FEF357EA1A} = {9ED03ACF-69C1-4314-927F-9D7EF1805084}
+		{B3112BFB-F570-4B20-9918-BB03C50DD4FC} = {9ED03ACF-69C1-4314-927F-9D7EF1805084}
+		{A94AB3B9-92B3-459C-841F-48AF85502612} = {9ED03ACF-69C1-4314-927F-9D7EF1805084}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C23AB75C-60E6-4CEB-94F7-D31C1A7C552A}

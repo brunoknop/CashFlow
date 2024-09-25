@@ -1,5 +1,4 @@
-﻿using CashFlow.Communication.Requests;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace CashFlow.Api.Controllers;
 

@@ -41,4 +41,25 @@
     <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
         <value>The expense is not found</value>
     </data>
+    <data name="EMAIL_EMPTY" xml:space="preserve">
+        <value>The e-mail cannot be empty</value>
+    </data>
+    <data name="EMAIL_INVALID" xml:space="preserve">
+        <value>The e-mail is invalid</value>
+    </data>
+    <data name="NAME_EMPTY" xml:space="preserve">
+        <value>The name cannot be empty</value>
+    </data>
+    <data name="INVALID_PASSWORD" xml:space="preserve">
+        <value>The password must be at least 8 characters long and include uppercase and lowercase letters, numbers and symbols.</value>
+    </data>
+    <data name="EMAIL_EXISTS" xml:space="preserve">
+        <value>The e-mail aready used in an active account</value>
+    </data>
+    <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+        <value>The e-mail and the password are incorrects</value>
+    </data>
+    <data name="INVALID_TOKEN" xml:space="preserve">
+        <value>The token is invalid.</value>
+    </data>
 </root>

@@ -1,4 +1,3 @@
-using PdfSharp.Charting;
 using PdfSharp.Fonts;
 using System.Reflection;
 

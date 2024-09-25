@@ -1,5 +1,5 @@
-using CashFlow.Communication.Requests;
-using CashFlow.Communication.Responses;
+using CashFlow.Communication.Requests.Expenses;
+using CashFlow.Communication.Responses.Expenses;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
 
