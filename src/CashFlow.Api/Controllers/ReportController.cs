@@ -3,6 +3,7 @@ using CashFlow.Application.UseCases.Expenses.Reports.Pdf;
 using CashFlow.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Net.Mime;
 
 namespace CashFlow.Api.Controllers;
@@ -11,6 +12,7 @@ namespace CashFlow.Api.Controllers;
 public class ReportController : CashFLowBaseController
 {
     [HttpGet("excel")]
+    [SwaggerOperation(Summary = "Gera o relatório de despesas em um mês em Excel.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetExcel(
@@ -26,6 +28,7 @@ public class ReportController : CashFLowBaseController
     }
 
     [HttpGet("pdf")]
+    [SwaggerOperation(Summary = "Gera o relatório de despesas em um mês em PDF.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetPdf(

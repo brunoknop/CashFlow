@@ -17,6 +17,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(config =>
 {
+    config.EnableAnnotations();
+    
+    config.SwaggerDoc("v1", new OpenApiInfo
+    { 
+        Version = "v1",
+        Title = "CashFlow.Api",
+        Description = "Sistema de controle de gastos com relatórios",
+        Contact = new OpenApiContact
+        {
+            Name = "Bruno Knop",
+            Email = "brunog.knop@gmail.com",
+            Url = new Uri("https://www.linkedin.com/in/brunoknop/")
+        }
+    });
+    
     config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
