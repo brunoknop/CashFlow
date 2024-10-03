@@ -11,6 +11,7 @@ namespace CashFlow.Api.Controllers;
 public class LoginController : CashFLowBaseController
 {
     [HttpPost]
+    [SwaggerIgnore]
     [AllowAnonymous]
     [SwaggerOperation(Summary = "Efetua o login no sistema")]
     [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]

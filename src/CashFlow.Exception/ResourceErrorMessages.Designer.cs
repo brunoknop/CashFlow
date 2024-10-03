@@ -159,6 +159,24 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The new password is the same as the current password.
+        /// </summary>
+        public static string NEW_PASSWORD_SAME_AS_CURRENT_PASSWORD {
+            get {
+                return ResourceManager.GetString("NEW_PASSWORD_SAME_AS_CURRENT_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password is different from the current password.
+        /// </summary>
+        public static string PASSWORD_DIFFERENT_CURRENT_PASSWORD {
+            get {
+                return ResourceManager.GetString("PASSWORD_DIFFERENT_CURRENT_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The payment type is invalid.
         /// </summary>
         public static string PAYMENT_TYPE_IS_INVALID {

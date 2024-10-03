@@ -7,7 +7,6 @@ namespace CashFlow.Infrastructure.DataAccess.Repositories;
 internal class ExpensesRepository :
     IExpensesReadOnlyRepository,
     IExpensesWriteOnlyRepository,
-    IExpensesDeleteOnlyRepository,
     IExpensesUpdateOnlyRepository
 {
     private readonly CashFlowDbContext _dbContext;

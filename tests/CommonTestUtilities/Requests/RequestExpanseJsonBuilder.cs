@@ -4,7 +4,7 @@ using CashFlow.Communication.Requests.Expenses;
 
 namespace CommonTestUtilities.Requests;
 
-public class RequestRegisterExpanseJsonBuilder
+public class RequestExpanseJsonBuilder
 {
     public static RequestExpanseJson Build()
         => new Faker<RequestExpanseJson>()

@@ -18,9 +18,9 @@ public class DoLoginTest : CashFlowClassFixture
 
     public DoLoginTest(CustomWebApplicationFactory factory) : base(factory)
     {
-        _email = factory.GetEmail();
-        _name = factory.GetName();
-        _password = factory.GetPassword();
+        _email = factory.User_Team_Member.GetEmail();
+        _name = factory.User_Team_Member.GetName();
+        _password = factory.User_Team_Member.GetPassword();
     }
 
     [Fact]

@@ -11,17 +11,17 @@ namespace WebApi.Test.Expenses.Register;
 public class RegisterExpenseTest : CashFlowClassFixture
 {
     private const string METHOD = "api/expenses";
-    private string _token;
+    private readonly string _token;
 
     public RegisterExpenseTest(CustomWebApplicationFactory factory) : base(factory)
     {
-        _token = factory.GetToken();
+        _token = factory.User_Team_Member.GetToken();
     }
     
     [Fact]
     public async Task Success()
     {
-        var request = RequestRegisterExpanseJsonBuilder.Build();
+        var request = RequestExpanseJsonBuilder.Build();
         
         var result = await DoPost(requestUri: METHOD, content: request, token: _token);
 
@@ -37,7 +37,7 @@ public class RegisterExpenseTest : CashFlowClassFixture
     [ClassData(typeof(CultureInlineDataTest))]
     public async Task Error_Title_Empty(string cultureInfo)
     {
-        var request = RequestRegisterExpanseJsonBuilder.Build();
+        var request = RequestExpanseJsonBuilder.Build();
         request.Title = string.Empty;
         
         var result = await DoPost(requestUri: METHOD, content: request, token: _token, culture: cultureInfo);;

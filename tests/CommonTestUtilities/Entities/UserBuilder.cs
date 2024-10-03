@@ -7,7 +7,7 @@ namespace CommonTestUtilities.Entities;
 
 public class UserBuilder
 {
-    public static User Build()
+    public static User Build(Role? role = Role.TeamMember)
     {
         var passwordEncripter = new PasswordEncrypterBuilder().Build();
 
@@ -17,7 +17,7 @@ public class UserBuilder
                    .RuleFor(u => u.Email, (faker, user) => faker.Internet.Email(user.Name))
                    .RuleFor(u => u.Password, (_, user) => passwordEncripter.Encrypt(user.Password))
                    .RuleFor(u => u.UserIdentifier, _ => Guid.NewGuid())
-                   .RuleFor(u => u.Role, _ => Role.Administrator);
+                   .RuleFor(u => u.Role, _ => role);
         
         return user;
     }

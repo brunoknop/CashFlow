@@ -65,4 +65,10 @@
     <data name="EXPENSES_NOT_FOUND_FOR_THE_PERIOD" xml:space="preserve">
         <value>Expenses not found for the desired period</value>
     </data>
+    <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+        <value>The password is different from the current password</value>
+    </data>
+    <data name="NEW_PASSWORD_SAME_AS_CURRENT_PASSWORD" xml:space="preserve">
+        <value>The new password is the same as the current password</value>
+    </data>
 </root>

@@ -2,7 +2,7 @@ using CashFlow.Communication.Responses.Expenses;
 
 namespace CashFlow.Application.UseCases.Expenses.GetById;
 
-public interface IGetByIdUseCase
+public interface IGetExpenseByIdUseCase
 {
     Task<ResponseExpenseJson> Execute(long id);
 }

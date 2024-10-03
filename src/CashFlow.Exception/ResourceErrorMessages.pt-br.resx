@@ -57,4 +57,10 @@
     <data name="EXPENSES_NOT_FOUND_FOR_THE_PERIOD" xml:space="preserve">
         <value>Despesas não encontradas para o período desejado</value>
     </data>
+    <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+        <value>A senha é diferente da senha atual</value>
+    </data>
+    <data name="NEW_PASSWORD_SAME_AS_CURRENT_PASSWORD" xml:space="preserve">
+        <value>A nova senha é igual a senha atual</value>
+    </data>
 </root>

@@ -21,7 +21,7 @@ public class ExpenseBuilder
         return expense;
     }
 
-    public static List<Expense> BuildMany(User user, uint? quantity = 3)
+    public static List<Expense> Colletion(User user, uint? quantity = 3)
     {
         if (quantity is 0) quantity = 2;
         

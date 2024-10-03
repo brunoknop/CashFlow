@@ -2,18 +2,16 @@ using AutoMapper;
 using CashFlow.Communication.Responses.Expenses;
 using CashFlow.Domain.Repositories.ExpensesRepositories;
 using CashFlow.Domain.Services.LoggedUser;
-using CashFlow.Exception;
-using CashFlow.Exception.ExceptionsBase;
 
-namespace CashFlow.Application.UseCases.Expenses.GetById;
+namespace CashFlow.Application.UseCases.Expenses.GetAll;
 
-public class GetByIdUseCase : IGetByIdUseCase
+public class GetAllExpensesUseCase : IGetAllExpensesUseCase
 {
     private readonly IExpensesReadOnlyRepository _repository;
     private readonly IMapper _mapper;
     private readonly ILoggedUser _loggedUser;
 
-    public GetByIdUseCase(
+    public GetAllExpensesUseCase(
         IExpensesReadOnlyRepository repository,
         IMapper mapper,
         ILoggedUser loggedUser)
@@ -23,15 +21,13 @@ public class GetByIdUseCase : IGetByIdUseCase
         _loggedUser = loggedUser;
     }
 
-    public async Task<ResponseExpenseJson> Execute(long id)
+    public async Task<ResponseExpensesJson> Execute()
     {
         var loggedUser = await _loggedUser.GetLoggedUser();
-        
-        var expense = await _repository.GetById(loggedUser, id);
-
-        if (expense == null)
-            throw new NotFoundException(ResourceErrorMessages.EXPENSE_NOT_FOUND);
-
-        return _mapper.Map<ResponseExpenseJson>(expense);
+        var expenses = await _repository.GetAll(loggedUser);
+        return new ResponseExpensesJson
+        {
+            Expenses = _mapper.Map<List<ResponseShortExpenseJson>>(expenses)
+        };
     }
 }

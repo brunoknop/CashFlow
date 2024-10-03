@@ -1,5 +1,5 @@
-﻿using CashFlow.Application.UseCases.Expenses.DeleteById;
-using CashFlow.Application.UseCases.Expenses.GetAllExpenses;
+﻿using CashFlow.Application.UseCases.Expenses.Delete;
+using CashFlow.Application.UseCases.Expenses.GetAll;
 using CashFlow.Application.UseCases.Expenses.GetById;
 using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Application.UseCases.Expenses.Update;
@@ -45,10 +45,10 @@ public class ExpensesController : CashFLowBaseController
     [ProducesResponseType(typeof(ResponseExpenseJson), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(
-        [FromServices] IGetByIdUseCase useCase,
+        [FromServices] IGetExpenseByIdUseCase expenseByIdUseCase,
         [FromRoute] long id)
     {
-        var response = await useCase.Execute(id);
+        var response = await expenseByIdUseCase.Execute(id);
         return Ok(response);
     }
 
@@ -57,10 +57,10 @@ public class ExpensesController : CashFLowBaseController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteById(
-        [FromServices] IDeleteByIdUseCase useCase,
+        [FromServices] IDeleteExpenseUseCase expenseUseCase,
         [FromRoute] long id)
     {
-        await useCase.Execute(id);
+        await expenseUseCase.Execute(id);
         return NoContent();
     }
 

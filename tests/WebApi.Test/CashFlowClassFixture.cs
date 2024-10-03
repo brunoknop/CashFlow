@@ -7,16 +7,37 @@ public abstract class CashFlowClassFixture : IClassFixture<CustomWebApplicationF
 {
     private readonly HttpClient _httpClient;
     
-    public CashFlowClassFixture(CustomWebApplicationFactory factory)
+    protected CashFlowClassFixture(CustomWebApplicationFactory factory)
     {
         _httpClient = factory.CreateClient();
     }
 
-    public async Task<HttpResponseMessage> DoPost(string requestUri, object content, string token = "", string culture = "en")
+    protected async Task<HttpResponseMessage> DoPost(string requestUri, object content, string token = "", string culture = "en")
     {
         AuthorizeWithToken(token);
         SetCultureInfo(culture);
         return await _httpClient.PostAsJsonAsync(requestUri, content);
+    }
+
+    protected async Task<HttpResponseMessage> DoGet(string requestUri, string token = "", string culture = "en")
+    {
+        AuthorizeWithToken(token);
+        SetCultureInfo(culture);
+        return await _httpClient.GetAsync(requestUri);
+    }
+
+    protected async Task<HttpResponseMessage> DoPut(string requestUri, object content, string token, string culture = "en")
+    {
+        AuthorizeWithToken(token);
+        SetCultureInfo(culture);
+        return await _httpClient.PutAsJsonAsync(requestUri, content);
+    }
+    
+    protected async Task<HttpResponseMessage> DoDelete(string requestUri, string token, string culture = "en")
+    {
+        AuthorizeWithToken(token);
+        SetCultureInfo(culture);
+        return await _httpClient.DeleteAsync(requestUri);
     }
 
     private void AuthorizeWithToken(string token)

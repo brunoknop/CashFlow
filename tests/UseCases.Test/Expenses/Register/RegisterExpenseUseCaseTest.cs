@@ -17,7 +17,7 @@ public class RegisterExpenseUseCaseTest
     [Fact]
     public async Task Success()
     {
-        var request = RequestRegisterExpanseJsonBuilder.Build();
+        var request = RequestExpanseJsonBuilder.Build();
         var user = UserBuilder.Build();
         
         var useCase = CreateUseCase(user);
@@ -31,7 +31,7 @@ public class RegisterExpenseUseCaseTest
     [Fact]
     public async Task Error_Title_Empty()
     {
-        var request = RequestRegisterExpanseJsonBuilder.Build();
+        var request = RequestExpanseJsonBuilder.Build();
         request.Title = string.Empty;
         
         var user = UserBuilder.Build();

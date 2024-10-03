@@ -13,6 +13,6 @@ public class User
     public string Password { get; set; } = string.Empty;
     
     public Guid UserIdentifier { get; set; }
-    
-    public Role Role { get; set; }
+
+    public Role Role { get; set; } = Role.TeamMember;
 }

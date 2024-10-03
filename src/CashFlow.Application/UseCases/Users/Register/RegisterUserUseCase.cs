@@ -2,7 +2,6 @@ using AutoMapper;
 using CashFlow.Communication.Requests.Users;
 using CashFlow.Communication.Responses.Users;
 using CashFlow.Domain.Entities;
-using CashFlow.Domain.Enums;
 using CashFlow.Domain.Repositories;
 using CashFlow.Domain.Repositories.UsersRepositories;
 using CashFlow.Domain.Security.Cryptography;
@@ -13,48 +12,31 @@ using FluentValidation.Results;
 
 namespace CashFlow.Application.UseCases.Users.Register;
 
-public class RegisterUserUseCase : IRegisterUserUseCase
+public class RegisterUserUseCase(
+    IUserWriteOnlyRepository userWriteOnlyRepository,
+    IUserReadOnlyRespoitory userReadOnlyRepository,
+    IUnityOfWork unityOfWork,
+    IMapper mapper,
+    IPasswordEncrypter passwordEncrypter,
+    IAccessTokenGenerator tokenGenerator
+) : IRegisterUserUseCase
 {
-    private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
-    private readonly IUserReadOnlyRespoitory _userReadOnlyRepository;
-    private readonly IUnityOfWork _unityOfWork;
-    private readonly IMapper _mapper;
-    private readonly IPasswordEncrypter _passwordEncrypter;
-    private readonly IAccessTokenGenerator _tokenGenerator;
-
-    public RegisterUserUseCase(
-        IUserWriteOnlyRepository userWriteOnlyRepository,
-        IUserReadOnlyRespoitory userReadOnlyRepository,
-        IUnityOfWork unityOfWork, 
-        IMapper mapper, 
-        IPasswordEncrypter passwordEncrypter,
-        IAccessTokenGenerator tokenGenerator)
-    {
-        _userWriteOnlyRepository = userWriteOnlyRepository;
-        _userReadOnlyRepository = userReadOnlyRepository;
-        _unityOfWork = unityOfWork;
-        _mapper = mapper;
-        _passwordEncrypter = passwordEncrypter;
-        _tokenGenerator = tokenGenerator;
-    }
-    
     public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
     {
         await Validate(request);
         
-        var user = _mapper.Map<User>(request);
+        var user = mapper.Map<User>(request);
         
-        user.Role = Role.TeamMember;
-        user.Password = _passwordEncrypter.Encrypt(request.Password);
+        user.Password = passwordEncrypter.Encrypt(request.Password);
         user.UserIdentifier = Guid.NewGuid();
         
-        await _userWriteOnlyRepository.Add(user);
-        await _unityOfWork.Commit();
+        await userWriteOnlyRepository.Add(user);
+        await unityOfWork.Commit();
 
         return new ResponseRegisteredUserJson()
         {
             Name = user.Name,
-            Token = _tokenGenerator.Generate(user)
+            Token = tokenGenerator.Generate(user)
         };
     }
 
@@ -63,11 +45,10 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         var validator = new RegisterUserValidator();
         var result = validator.Validate(request);
         
-        var emailAlreadyExists = await _userReadOnlyRepository.ExistsActiveUserWithEmail(request.Email);
+        var emailAlreadyExists = await userReadOnlyRepository.ExistsActiveUserWithEmail(request.Email);
 
         if (emailAlreadyExists)
             result.Errors.Add(new ValidationFailure(string.Empty, ResourceErrorMessages.EMAIL_EXISTS));
-            
         
         if (result.IsValid)
             return;
