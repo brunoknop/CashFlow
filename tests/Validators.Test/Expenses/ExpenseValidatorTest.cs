@@ -3,10 +3,11 @@ using CashFlow.Communication.Enum;
 using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
+using TagEnum = CashFlow.Communication.Enum.Tag;
 
-namespace Validators.Test.Expenses.Register;
+namespace Validators.Test.Expenses;
 
-public class RegisterExpenseValidatorTest
+public class ExpenseValidatorTest
 {
     [Fact]
     public void Success()
@@ -89,5 +90,21 @@ public class RegisterExpenseValidatorTest
         //Assert
         result.IsValid.Should().BeFalse();
         result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceErrorMessages.PAYMENT_TYPE_IS_INVALID));
+    }
+    
+    [Fact]
+    public void Error_Unsupported_Tag()
+    {
+        //Arrange
+        var validator = new ExpanseValidator();
+        var request = RequestExpanseJsonBuilder.Build();
+        request.Tags.Add((TagEnum)1000);
+
+        //Act
+        var result = validator.Validate(request);
+
+        //Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceErrorMessages.TAG_TYPE_NOT_SUPPORTED));
     }
 }

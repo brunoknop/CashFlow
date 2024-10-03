@@ -13,4 +13,6 @@ public class RequestExpanseJson
     public decimal Amount { get; set; }
 
     public PaymentType PaymentType { get; set; }
+
+    public List<Tag> Tags { get; set; } = [];
 }

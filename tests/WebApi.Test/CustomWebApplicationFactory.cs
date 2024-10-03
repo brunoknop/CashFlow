@@ -84,7 +84,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     private void AddTeamMemberExpenses(CashFlowDbContext dbContext, User user)
     {
         var expenses = ExpenseBuilder.Colletion(user, 5);
-        foreach (var expense in expenses) expense.Id = 0; 
+        foreach(var expense in expenses)
+        {
+            expense.Id = 0;
+            foreach(var tag in expense.Tags) tag.Id = 0;
+        } 
         dbContext.Expenses.AddRange(expenses);
         dbContext.SaveChanges();
         
@@ -94,7 +98,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     private void AddAdminExpenses(CashFlowDbContext dbContext, User user)
     {
         var expenses = ExpenseBuilder.Colletion(user, 5);
-        foreach (var expense in expenses) expense.Id = 0;
+        foreach(var expense in expenses)
+        {
+            expense.Id = 0;
+            foreach(var tag in expense.Tags) tag.Id = 0;
+        }
         dbContext.Expenses.AddRange(expenses);
         dbContext.SaveChanges();
 

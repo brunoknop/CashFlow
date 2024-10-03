@@ -63,4 +63,7 @@
     <data name="NEW_PASSWORD_SAME_AS_CURRENT_PASSWORD" xml:space="preserve">
         <value>A nova senha é igual a senha atual</value>
     </data>
+    <data name="TAG_TYPE_NOT_SUPPORTED" xml:space="preserve">
+        <value>Tag não suportada</value>
+    </data>
 </root>
